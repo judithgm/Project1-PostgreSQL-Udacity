@@ -60,7 +60,7 @@ They'd like a data engineer to create a Postgres database with tables designed t
 
 1. Once configured the queries of creation and deletion of tables, insertion of records, and the rest of procedures in the script **sql_queries.py**, from the Launcher, open a terminal, navigate to the path where the scripts are (ls) and type the command:
                                                                                      
-![launch create_tables](launcher_create_tables.png) 
+![launch create_tables](launcher_create_tables.PNG) 
                                                                                 
 2. Then, you have to fill in the cells of the notebook **etl.ipynb**, according to the indications. In this step, we are going to use procedures to prepare and insert records in the tables that have been created but in a simplified way, since it is a test notebook that uses only one file of the directory in each case to make sure that we are programming correctly the etl part of the notebook.
 
@@ -69,7 +69,7 @@ Simultaneously to the experimentation with the **etl.ipynb** notebook, we can us
 
 3. Once we have got the etl process to work correctly, we fill in the gaps in the **etl.py** script, taking some help from the code snippets we used in the **etl.ipynb** notebook. In this script, we include the processing of all the existing data files in the directories (song_data, log_data), and their subsequent insertion into the tables. To compile this script, we reopen the terminal and run the following command from the appropriate path :
                                                
-![launch etl](launcher_etl.png)  
+![launch etl](launcher_etl.PNG)  
  
 4. Finally, we check again using the notebook **test.ipynb** the aspect of the tables with some test queries and we compile the last cells that will help us to find out if we have programmed the **sql_queries.py** script correctly by defining all the required constraints (definition of Primary Keys, not nulls, handle insertion of duplicates, etc.)
 
@@ -78,11 +78,11 @@ When we have checked that all parts of the code work, when we compile **etl.py**
 
 - For song data:
 
-![prints_etl_song_data](prints_etl_song_data.png)  
+![prints_etl_song_data](prints_etl_song_data.PNG)  
 
 - For log data:
 
-![prints_etl_log_data](prints_etl_log_data.png)  
+![prints_etl_log_data](prints_etl_log_data.PNG)  
 
 ### Constraints explanation
 
