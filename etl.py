@@ -6,6 +6,11 @@ from sql_queries import *
 
 
 def process_song_file(cur, filepath):
+    """
+    - This function reads the JSON files about song data in the filepath and convert them to dataframes
+    - Then it stores in vectors the song data from the dataframe for the **songs** table and also the artist data for the **artists** table.
+    - Finally it uses the cursor to insert the data into each table
+    """
     # open song file
     df = pd.read_json(filepath, lines=True)
 
@@ -19,6 +24,14 @@ def process_song_file(cur, filepath):
 
 
 def process_log_file(cur, filepath):
+    """
+     - This function reads the JSON files about log data in the filepath and convert them to dataframes
+    - Later, it performs a filtering of records, by the value "NextSong". 
+    - Then it creates new time fields from the "timestamp" variable to insert into the **time** table. 
+    - After that it processes the data from the necessary columns to insert to the **users** table. 
+    - Then, using the query *song_select* defined in sql_queries.py, it obtains the songs and artists data and selects some other fields for the **songplays** table.
+    - Finally it uses the cursor to insert the data into each table
+    """
     # open log file
     df = pd.read_json(filepath,lines=True)
 
@@ -63,6 +76,10 @@ def process_log_file(cur, filepath):
 
 
 def process_data(cur, conn, filepath, func):
+    """
+    - This is a "master" function that first unifies all the JSON files from the selected type of data and then calls the functions process_song_file or process_log_file so that all files in the song_data and log_data directories are processed in each case and the data is inserted into the tables
+    """
+    
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):
@@ -82,6 +99,10 @@ def process_data(cur, conn, filepath, func):
 
 
 def main():
+    """
+    This function creates the connection and cursor of the database, calls **process_data** twice to process the song data and log data and finally closes the connection.
+    """
+    
     conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=student password=student")
     cur = conn.cursor()
 
